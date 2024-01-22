@@ -3,11 +3,10 @@ import React from 'react';
 
 import { Hourglass } from 'react-loader-spinner';
 
-const LoaderButton = ({}) => {
+const LoaderButton = () => {
   return (
     <button
       className="bg-blue-100 text-white py-2 px-4 rounded focus:outline-none"
-
     >
     
       <Hourglass
