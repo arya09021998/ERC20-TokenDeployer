@@ -1,7 +1,7 @@
 // DropdownMenu.js
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCogs, faQuestion, faBook } from '@fortawesome/free-solid-svg-icons';
+import { faCogs,  faBook } from '@fortawesome/free-solid-svg-icons';
 
 const DropdownMenu = () => {
   return (

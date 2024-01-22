@@ -9,7 +9,7 @@ const CreateToken = () => {
   const [initialSupply, setInitialSupply] = useState("");
 
   const createToken = useMutation(async () => {
-    const response = await fetch("http://localhost:3001/createToken", {
+    const response = await fetch("https://erc20token.onrender.com/createToken", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
