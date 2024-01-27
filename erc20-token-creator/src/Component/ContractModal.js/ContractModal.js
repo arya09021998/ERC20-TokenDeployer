@@ -41,7 +41,7 @@ const ContractModal = () => {
 
 
     return (
-        <div>
+        <div className=''>
 
 
             <button
@@ -64,12 +64,12 @@ const ContractModal = () => {
                     </div>
 
 
-<span className='text-black sm:hidden py-10  '>Please use desktop to view full code properly
+                    <span className='text-black sm:hidden py-10  '>Please use desktop to view full code properly
 
-<br />
+                        <br />
 
-Also you can slide the code left and Right
-</span>
+                        Also you can slide the code left and Right
+                    </span>
 
                 </div>
             </div>

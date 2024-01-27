@@ -1,15 +1,20 @@
 import React from 'react'
 import Main from "./Component/Main/Main.js"
+import { CreateTokenProvider } from './Component/Contexts/CreateTokenContext.js'
 
 
 const App = () => {
   return (
-    <div>
+<CreateTokenProvider>
+
 
 
 <Main></Main>
 
-    </div>
+
+
+
+</CreateTokenProvider>
   )
 }
 

@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+body {
+    @apply bg-gray-100 font-sans;
+  }
+  
+  input, select, button {
+    @apply w-full border rounded-md p-2 mb-3 focus:outline-none focus:border-blue-500;
+  }

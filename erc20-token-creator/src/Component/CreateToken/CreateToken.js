@@ -38,8 +38,11 @@ const CreateToken = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-blue-100">
+
+      
+
       <div className="bg-white p-8 rounded shadow-md max-w-md w-full">
-        <h1 className="text-3xl font-extrabold mb-6 text-blue-600">ERC-20 Token Creator</h1>
+        <h1 className="text-3xl font-extrabold mb-6 text-blue-600">ERC-20 Token Creator without Login</h1>
         <label className="block text-2xl mb-4">
           Token Name:
           <input
@@ -89,7 +92,7 @@ const CreateToken = () => {
             Create Token
           </button>
         )}
- */}
+           */}
 
         {createToken.isLoading ? (
           <LoaderButton />
