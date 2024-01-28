@@ -2,7 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { ethers } from "ethers";
 import TokenCreatorContract from "../Contracts/TokenCreator.json"
 
-import { BrowserProvider, parseUnits, formatEther, formatUnits, wait, deployTransaction  } from "ethers";
+import {  formatEther } from "ethers";
 
 
 const CreateTokenContext = createContext();
@@ -20,6 +20,7 @@ export const CreateTokenProvider = ({ children }) => {
 
     const [blockNumber, setBlockNumber] = useState(0);
     const [balance, setBalance] = useState(0);
+    // eslint-disable-next-line
     const [tokenBalance, setTokenBalance] = useState(0);
 const [Loading, setLoading] = useState(false);
 
@@ -128,7 +129,7 @@ const [contractAdd, setcontractAdd] = useState("");
                 // in ether instead.
                 const accountBalanace = formatEther(balance)
                 // '4.08526703247667308'
-                // console.log(accountBalanace);
+                console.log(accountBalanace);
 
             }
 
@@ -170,7 +171,7 @@ const [contractAdd, setcontractAdd] = useState("");
                     // in ether instead.
                     const accountBalanace = formatEther(balance)
                     // '4.08526703247667308'
-                    // console.log(accountBalanace);
+                    console.log(accountBalanace);
 
                 }
 
