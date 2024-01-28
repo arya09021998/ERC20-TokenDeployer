@@ -21,12 +21,12 @@ const Header = () => {
             <ContractModal></ContractModal>
 
 
-            <a href="#CreateTokenWithMetamask"></a>
+            <a href="#CreateTokenWithMetamask">
             <button
 
               className='bg-gradient-to-r  from-cyan-500 to-blue-500 py-5 px-5   hover:from-indigo-500 hover:via-purple-500 hover:to-pink-500  font-bold rounded-xl hover:ring-4 shadow-2xl w-64  hover:shadow-2xl '> Create ERC20 Token With Your Metamask Wallet Accounts  </button>
 
-
+</a>
 
           </div>
         </div>
