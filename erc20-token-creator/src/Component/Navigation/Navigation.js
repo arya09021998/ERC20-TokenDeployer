@@ -35,35 +35,28 @@ const Navigation = () => {
 
 
 
-          <li className='hidden'>
-            <Link to="/token-generator" className="text-white hover:text-bg-gray-200">
+          {/* <li className='hidden'>
+            <Link to="/" className="text-white hover:text-bg-gray-200">
               Token Generator
             </Link>
             <ul className="absolute bg-white p-2 space-y-2">
           
             </ul>
-          </li>
+          </li> */}
 
           
         </ul>
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-white focus:outline-none"
+          className="md:hidden text-white "
           onClick={toggleMobileMenu}
         >
-    
-
-
-
-          { isMobileMenuOpen ? (<> <IoMdClose  fontSize={25} /></>) : (<> <GiHamburgerMenu  fontSize={25} />  </>)
-
-
-
-          }
+          { isMobileMenuOpen ? (<> <IoMdClose  fontSize={25} /></>) : (<> <GiHamburgerMenu  fontSize={25} />  </>)  }
         </button>
 
         {/* Mobile Menu */}
+        
         {isMobileMenuOpen && (
          <MobileNav/>
         )}

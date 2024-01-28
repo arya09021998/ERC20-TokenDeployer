@@ -9,19 +9,38 @@ import CreateTokenWithMetamask from '../CreateToken/CreateTokenWithMetamask'
 
 const Main = () => {
   return (
-    <div className='scroll-smooth'>
+    <div className='scroll-smooth bg-blue-100 '>
+      <div>
+        <Navigation></Navigation>
 
-      {/* <Navigation></Navigation>
+      </div>
 
-
+<div>
 <Header></Header>
-<CreateToken/>
-
-<Footer></Footer> */}
+</div>
 
 
+     <div>
+     <CreateToken />
 
-<CreateTokenWithMetamask/>
+     </div>
+
+
+      <div id='CreateTokenWithMetamask'>
+
+
+        <CreateTokenWithMetamask />
+
+
+      </div>
+
+
+   <div>
+   <Footer></Footer>
+
+   </div>
+
+
 
 
     </div>

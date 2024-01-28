@@ -2,7 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { ethers } from "ethers";
 import TokenCreatorContract from "../Contracts/TokenCreator.json"
 
-import { BrowserProvider, parseUnits, formatEther, formatUnits, utils } from "ethers";
+import { BrowserProvider, parseUnits, formatEther, formatUnits, wait, deployTransaction  } from "ethers";
 
 
 const CreateTokenContext = createContext();
@@ -21,14 +21,18 @@ export const CreateTokenProvider = ({ children }) => {
     const [blockNumber, setBlockNumber] = useState(0);
     const [balance, setBalance] = useState(0);
     const [tokenBalance, setTokenBalance] = useState(0);
+const [Loading, setLoading] = useState(false);
 
+const [IsSuccess, setIsSuccess] = useState(false);
+const [IsFailed, setIsFailed] = useState(false);
+const [contractAdd, setcontractAdd] = useState("");
 
-console.log(TokenCreatorContract.bytecode);
-console.log(TokenCreatorContract.output.abi);
+// console.log(TokenCreatorContract.bytecode);
+// console.log(TokenCreatorContract.output.abi);
 
     // console.log("this ether object", ethers);
     async function deployTokenContract() {
-
+  
         let signer = null;
         let provider;
 
@@ -46,28 +50,49 @@ console.log(TokenCreatorContract.output.abi);
                 const factory = new ethers.ContractFactory(TokenCreatorContract.output.abi, TokenCreatorContract.bytecode, signer);
 
                 console.log("yes before deployement contract");
-    
+                setLoading(true);
+
                 const deployedContract = await factory.deploy(
                     tokenName,
                     tokenSymbol,
                     parseInt(tokenDecimals),
                     // ethers.utils.parseUnits(initialSupply, parseInt(tokenDecimals)),
                     // ethers.utils.parseUnits(maxSupply, parseInt(tokenDecimals))
-                   parseUnits(initialSupply, parseInt(tokenDecimals)),
-                   parseUnits(maxSupply, parseInt(tokenDecimals))
+                //    ethers.parseUnits(initialSupply, parseInt(tokenDecimals)),
+                //    ethers.parseUnits(maxSupply, parseInt(tokenDecimals))
+
+                parseInt(initialSupply),
+                parseInt(maxSupply)
                     // parseUnits(initialSupply, tokenDecimals),
                     // parseUnits(maxSupply, tokenDecimals)
                 );
 
-                console.log("Yes ! The contract is deployed at this address: ", deployedContract.address);
-    
-                await deployedContract.deployed();
+                // await deployedContract.address;
+                // await deployedContract.deployed();
+
+              
+                   await deployedContract.waitForDeployment();
+                const contractAddress = await  deployedContract.getAddress(); // Access the address directly
+                console.log("Contract deployed at address:", contractAddress);
+
+                setcontractAdd(contractAddress);
+                
+                setLoading(false);
+
+                setIsSuccess(true);
+                
+
+//                 console.log("Yes ! The contract is deployed at this address: ", deployedContract.address);
                 setContractInstance(deployedContract);
     
-                console.log("Contract deployed:", deployedContract.address);
+// console.log(contractInstance);
+
+//                 console.log("Contract deployed:", deployedContract.address);
             }   
         } catch (error) {
             console.error("Error deploying contract:", error);
+            setLoading(false);
+            setIsFailed(true);
         }
     }
 
@@ -103,7 +128,7 @@ console.log(TokenCreatorContract.output.abi);
                 // in ether instead.
                 const accountBalanace = formatEther(balance)
                 // '4.08526703247667308'
-                console.log(accountBalanace);
+                // console.log(accountBalanace);
 
             }
 
@@ -116,7 +141,7 @@ console.log(TokenCreatorContract.output.abi);
     useEffect(() => {
 
 
-        async function connectMetamask() {
+        async function connectMeta() {
             let signer = null;
             let provider;
             try {
@@ -145,7 +170,7 @@ console.log(TokenCreatorContract.output.abi);
                     // in ether instead.
                     const accountBalanace = formatEther(balance)
                     // '4.08526703247667308'
-                    console.log(accountBalanace);
+                    // console.log(accountBalanace);
 
                 }
 
@@ -154,13 +179,13 @@ console.log(TokenCreatorContract.output.abi);
             }
 
         }
-        connectMetamask();
+        connectMeta();
     }, []);
 
 
 
     return (
-        <CreateTokenContext.Provider value={{ accountAddress, setAccountAddress, connectMetamask, blockNumber, balance, tokenBalance, setMaxSupply, setInitialSupply, setTokenDecimals, setTokenSymbol, setTokenName, tokenName, tokenSymbol, tokenDecimals, initialSupply, maxSupply, contractInstance, setContractInstance, deployTokenContract}}>
+        <CreateTokenContext.Provider value={{ contractAdd, IsFailed, IsSuccess  , accountAddress, Loading, setAccountAddress, connectMetamask, blockNumber, balance, tokenBalance, setMaxSupply, setInitialSupply, setTokenDecimals, setTokenSymbol, setTokenName, tokenName, tokenSymbol, tokenDecimals, initialSupply, maxSupply, contractInstance, setContractInstance, deployTokenContract}}>
             {children}
         </CreateTokenContext.Provider>
     )

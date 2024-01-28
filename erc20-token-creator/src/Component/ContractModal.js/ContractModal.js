@@ -50,12 +50,12 @@ const ContractModal = () => {
 
 
 
-            {Modal && <div className='flex justify-center items-center   '>
+            {Modal && <div className='flex  justify-center items-center   '>
                 <div className='absolute rounded-3xl  flex flex-col  shadow-2xl ring-1 ring-sky-600 top-0 md:h-[70vh] max-sm:h-[80vh]  md:w-[100vh] max-sm:w-[100vw]  bg-white'>
                     <div className='flex justify-end py-4 px-4'>
                         <button
                             onClick={showModal}
-                            className='  py-2 px-3 font-bold text-white rounded-md bg-gradient-to-r from-cyan-500 to-blue-500'>Close</button>
+                            className=' w-16 py-2 px-3 font-bold text-white rounded-md hover:bg-blue-400 bg-gradient-to-r from-cyan-500 to-blue-500'>Close</button>
                     </div>
                     <div className='  text-gray-800 '>
                         <SyntaxHighlighter language='solidity' style={darcula}>

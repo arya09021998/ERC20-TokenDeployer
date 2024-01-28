@@ -7,9 +7,12 @@ const TokenDetailsFetcher = () => {
 
   const fetchTokenDetails = async () => {
     try {
-      const response = await fetch(`https://api.etherscan.io/api?module=token&action=getToken&contractaddress=${tokenAddress}`);
-      const data = await response.json();
+      // const response = await fetch(`https://api.etherscan.io/api?module=token&action=getToken&contractaddress=${tokenAddress}`);
+      const response = await fetch(`https://api.goreily.io/api?module=token&action=getToken&contractaddress=${tokenAddress}`);
 
+      console.log(response);
+      const data = await response.json();
+      console.log(data);
       if (data.status === '1') {
         setTokenDetails(data.result);
         setError('');
